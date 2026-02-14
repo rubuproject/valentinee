@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Valentine 💖</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      padding: 20px;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .card {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(12px);
+      padding: 50px 70px;
+      border-radius: 30px;
+      text-align: center;
+      box-shadow: 
+        0 20px 60px rgba(0,0,0,0.3),
+        inset 0 1px 0 rgba(239, 182, 182, 0.4);
+      border: 1px solid rgba(255,255,255,0.3);
+      animation: cardFloat 6s ease-in-out infinite, cardGlow 3s ease-in-out infinite;
+      transform-style: preserve-3d;
+      transition: transform 0.3s ease;
+      max-width: 90%;
+      width: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 
+        0 30px 80px rgba(0,0,0,0.4),
+        inset 0 1px 0 rgba(240, 167, 167, 0.5);
+    }
+
+    @keyframes cardFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      25% { transform: translateY(-15px) rotate(1deg); }
+      50% { transform: translateY(-5px) rotate(0deg); }
+      75% { transform: translateY(-15px) rotate(-1deg); }
+    }
+
+    @keyframes cardGlow {
+      0%, 100% { 
+        box-shadow: 
+          0 20px 60px rgba(255,105,180,0.3),
+          inset 0 1px 0 rgba(255,255,255,0.4);
+      }
+      50% { 
+        box-shadow: 
+          0 20px 80px rgba(255,105,180,0.5),
+          0 0 40px rgba(255,192,203,0.4),
+          inset 0 1px 0 rgba(255,255,255,0.5);
+      }
+    }
+
+    .card h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 15px;
+      background: linear-gradient(45deg, #f49b9b, #f85b78, #e08c8c);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: textShine 3s ease-in-out infinite;
+      text-shadow: 0 5px 15px rgba(229, 159, 159, 0.3);
+      position: relative;
+      display: inline-block;
+      padding-right: 45px;
+    }
+
+    @keyframes textShine {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .card h1::after {
+      content: '💖';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: heartBounce 1.5s ease-in-out infinite;
+    }
+
+    @keyframes heartBounce {
+      0%, 100% { transform: translateY(-50%) scale(1); }
+      50% { transform: translateY(-60%) scale(1.3); }
+    }
+
+    .card p {
+      font-size: clamp(1rem, 3vw, 1.3rem);
+      opacity: 0.95;
+      line-height: 1.8;
+      animation: fadeInUp 1s ease 0.3s backwards;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 0.95;
+        transform: translateY(0);
+      }
+    }
+
+    .reply-btn {
+      margin-top: 25px;
+      display: inline-block;
+      padding: 14px 35px;
+      border-radius: 50px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,192,203,0.3));
+      color: #eb94a6;
+      text-decoration: none;
+      font-size: clamp(1rem, 2.5vw, 1.1rem);
+      font-weight: 600;
+      backdrop-filter: blur(8px);
+      border: 2px solid rgba(255,255,255,0.5);
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1s ease 0.6s backwards;
+    }
+
+    .reply-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .reply-btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .reply-btn:hover {
+      background: linear-gradient(135deg, rgba(248, 51, 126, 0.5), rgba(236, 103, 176, 0.5));
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 10px 30px rgba(255,105,180,0.4);
+    }
+
+    .reply-btn:active {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    .reply-btn span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .flower {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+    }
+
+    /* Floating hearts background */
+    .heart-bg {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+      opacity: 0.15;
+      font-size: 2rem;
+      animation: floatHeart 20s linear infinite;
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.15;
+      }
+      90% {
+        opacity: 0.15;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Sparkles */
+    .sparkle {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+      font-size: 1rem;
+      animation: sparkleAnim 3s ease-in-out infinite;
+    }
+
+    @keyframes sparkleAnim {
+      0%, 100% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1) rotate(180deg);
+      }
+    }
+
+    /* Overlay untuk trigger autoplay */
+    .start-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #f54778, #f45fd6, #fbc2eb);
+      background-size: 400% 400%;
+      animation: gradientShift 10s ease infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      cursor: pointer;
+      transition: opacity 0.8s ease;
+      padding: 20px;
+    }
+
+    .start-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .start-content {
+      text-align: center;
+      animation: pulse 2s ease-in-out infinite;
+      max-width: 90%;
+    }
+
+    .start-content h2 {
+      font-size: clamp(2rem, 6vw, 3rem);
+      margin-bottom: 20px;
+      text-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      animation: titleBounce 2s ease-in-out infinite;
+    }
+
+    @keyframes titleBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .start-content p {
+      font-size: clamp(1rem, 3vw, 1.4rem);
+      opacity: 0.95;
+      animation: blink 2s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.95; }
+      50% { opacity: 0.5; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Click ripple effect */
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.6);
+      transform: scale(0);
+      animation: rippleEffect 0.6s ease-out;
+      pointer-events: none;
+    }
+
+    @keyframes rippleEffect {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    /* Indikator musik */
+    .music-indicator {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.3);
+      padding: 12px 24px;
+      border-radius: 30px;
+      backdrop-filter: blur(8px);
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      z-index: 100;
+      display: none;
+      animation: slideInRight 0.5s ease;
+      border: 1px solid rgba(255,255,255,0.4);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    .music-indicator.show {
+      display: block;
+    }
+
+    @keyframes slideInRight {
+      from { 
+        opacity: 0; 
+        transform: translateX(100px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateX(0); 
+      }
+    }
+
+    /* Music bars animation */
+    .music-bars {
+      display: inline-flex;
+      gap: 3px;
+      margin-right: 8px;
+      align-items: flex-end;
+      height: 16px;
+    }
+
+    .music-bars span {
+      width: 3px;
+      background: #fff;
+      border-radius: 3px;
+      animation: musicBar 0.8s ease-in-out infinite;
+    }
+
+    .music-bars span:nth-child(1) { animation-delay: 0s; height: 8px; }
+    .music-bars span:nth-child(2) { animation-delay: 0.2s; height: 12px; }
+    .music-bars span:nth-child(3) { animation-delay: 0.4s; height: 10px; }
+
+    @keyframes musicBar {
+      0%, 100% { transform: scaleY(0.5); }
+      50% { transform: scaleY(1.5); }
+    }
+
+    /* RESPONSIVE STYLES */
+
+    /* Tablet & Small Desktop */
+    @media screen and (max-width: 1024px) {
+      .card {
+        padding: 40px 50px;
+      }
+      
+      .card h1::after {
+        right: -5px;
+      }
+    }
+
+    /* Mobile Landscape & Tablet Portrait */
+    @media screen and (max-width: 768px) {
+      body {
+        padding: 15px;
+      }
+
+      .card {
+        padding: 35px 40px;
+        border-radius: 25px;
+        max-width: 95%;
+      }
+
+      .card:hover {
+        transform: translateY(-5px) scale(1.01);
+      }
+
+      .reply-btn {
+        padding: 12px 30px;
+        margin-top: 20px;
+      }
+
+      .music-indicator {
+        bottom: 15px;
+        right: 15px;
+        padding: 10px 18px;
+      }
+
+      .flower {
+        font-size: 18px !important;
+      }
+
+      .heart-bg {
+        font-size: 1.5rem !important;
+      }
+    }
+
+    /* Mobile Portrait */
+    @media screen and (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+
+      .card {
+        padding: 30px 25px;
+        border-radius: 20px;
+        max-width: 100%;
+      }
+
+      .card h1 {
+        margin-bottom: 12px;
+        padding-right: 40px;
+      }
+
+      .card h1::after {
+        font-size: 1.8rem;
+      }
+
+      .card p {
+        line-height: 1.6;
+      }
+
+      .reply-btn {
+        padding: 12px 28px;
+        margin-top: 18px;
+        width: 100%;
+        max-width: 250px;
+      }
+
+      .music-indicator {
+        bottom: 10px;
+        right: 10px;
+        left: 10px;
+        padding: 10px 15px;
+        font-size: 0.85rem;
+        text-align: center;
+      }
+
+      .start-content h2 {
+        margin-bottom: 15px;
+      }
+
+      /* Kurangi jumlah partikel di mobile */
+      .flower:nth-child(n+8) {
+        display: none;
+      }
+
+      .heart-bg {
+        font-size: 1.2rem !important;
+      }
+
+      /* Disable hover effects di mobile untuk performa */
+      .card:hover {
+        transform: none;
+      }
+
+      @keyframes cardFloat {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+      }
+    }
+
+    /* Very Small Mobile */
+    @media screen and (max-width: 360px) {
+      .card {
+        padding: 25px 20px;
+      }
+
+      .card h1 {
+        padding-right: 35px;
+      }
+
+      .reply-btn {
+        padding: 10px 24px;
+        font-size: 0.95rem;
+      }
+
+      .music-indicator {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Landscape mode di mobile */
+    @media screen and (max-height: 500px) and (orientation: landscape) {
+      body {
+        padding: 10px;
+      }
+
+      .card {
+        padding: 20px 30px;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      .card h1 {
+        font-size: 1.8rem;
+        margin-bottom: 8px;
+      }
+
+      .card p {
+        font-size: 1rem;
+        line-height: 1.4;
+      }
+
+      .reply-btn {
+        margin-top: 12px;
+        padding: 10px 25px;
+      }
+
+      .music-indicator {
+        bottom: 8px;
+        right: 8px;
+        padding: 8px 15px;
+      }
+
+      @keyframes cardFloat {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-5px); }
+      }
+    }
+
+    /* High DPI screens */
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      .card {
+        backdrop-filter: blur(15px);
+      }
+    }
+
+    /* Dark mode support (jika dibutuhkan) */
+    @media (prefers-color-scheme: dark) {
+      .card {
+        background: rgba(255, 255, 255, 0.15);
+      }
+    }
+
+    /* Reduce motion untuk accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Overlay untuk trigger musik -->
+  <div class="start-overlay" id="startOverlay">
+    <div class="start-content">
+      <h2>💖 Happy Valentine 💖</h2>
+      <p>✨ Klik di mana saja untuk membuka ✨</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h1>Happy Valentine for you 💐</h1>
+    <p>Hari ini resmi jadi pengingat bahwa senyum itu penting.
+      Entah dirayakan besar-besaran atau biasa saja,<br>semoga tetap ada tawa kecil yang bikin hari terasa lebih ringan.</p>
+
+    <a href="https://ig.me/m/rubuu_2" target="_blank" class="reply-btn">
+      <span>Balas 💌</span>
+    </a>
+  </div>
+
+  <div class="music-indicator" id="musicIndicator">
+    <div class="music-bars">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    Musik sedang diputar
+  </div>
+
+  <audio id="bg-music" loop>
+    <source src="bluee.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const flowers = ["🌸", "🌹", "🌺", "🌷", "💮", "🏵️"];
+    const hearts = ["💖", "💕", "💗", "💓", "💝"];
+    const sparkles = ["✨", "⭐", "🌟", "💫"];
+
+    // Detect mobile
+    const isMobile = window.innerWidth <= 768;
+    const maxFlowers = isMobile ? 5 : 10;
+    let flowerCount = 0;
+
+    // Animasi bunga jatuh
+    function createFlower() {
+      if (flowerCount >= maxFlowers) return;
+      
+      const flower = document.createElement("div");
+      flower.className = "flower";
+      flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+
+      let startX = Math.random() * window.innerWidth;
+      let y = -50;
+      let speed = 1 + Math.random() * 2;
+      let swing = Math.random() * (isMobile ? 50 : 80);
+      let angle = Math.random() * 360;
+
+      flower.style.left = startX + "px";
+      flower.style.fontSize = (isMobile ? 18 : 20) + Math.random() * (isMobile ? 20 : 30) + "px";
+      flower.style.opacity = 0.7 + Math.random() * 0.3;
+
+      document.body.appendChild(flower);
+      flowerCount++;
+
+      function animate() {
+        y += speed;
+        angle += 1;
+        const x = startX + Math.sin(y * 0.015) * swing;
+
+        flower.style.transform =
+          `translate(${x}px, ${y}px) rotate(${angle}deg)`;
+
+        if (y < window.innerHeight + 60) {
+          requestAnimationFrame(animate);
+        } else {
+          flower.remove();
+          flowerCount--;
+        }
+      }
+
+      animate();
+    }
+
+    // Floating hearts background
+    function createFloatingHeart() {
+      if (isMobile && document.querySelectorAll('.heart-bg').length >= 3) return;
+      
+      const heart = document.createElement("div");
+      heart.className = "heart-bg";
+      heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+      heart.style.left = Math.random() * 100 + "%";
+      heart.style.animationDuration = (15 + Math.random() * 10) + "s";
+      heart.style.animationDelay = Math.random() * 5 + "s";
+      
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 25000);
+    }
+
+    // Sparkle effect around card
+    function createSparkle() {
+      if (isMobile && document.querySelectorAll('.sparkle').length >= 3) return;
+      
+      const sparkle = document.createElement("div");
+      sparkle.className = "sparkle";
+      sparkle.innerText = sparkles[Math.floor(Math.random() * sparkles.length)];
+      
+      const card = document.querySelector(".card");
+      const rect = card.getBoundingClientRect();
+      
+      const x = rect.left + Math.random() * rect.width;
+      const y = rect.top + Math.random() * rect.height;
+      
+      sparkle.style.left = x + "px";
+      sparkle.style.top = y + "px";
+      sparkle.style.animationDelay = Math.random() * 2 + "s";
+      
+      document.body.appendChild(sparkle);
+
+      setTimeout(() => {
+        sparkle.remove();
+      }, 3000);
+    }
+
+    // Click ripple effect
+    function createRipple(e) {
+      const ripple = document.createElement("div");
+      ripple.className = "ripple";
+      ripple.style.left = e.clientX + "px";
+      ripple.style.top = e.clientY + "px";
+      ripple.style.width = "10px";
+      ripple.style.height = "10px";
+      
+      document.body.appendChild(ripple);
+
+      setTimeout(() => {
+        ripple.remove();
+      }, 600);
+    }
+
+    // Start intervals dengan penyesuaian untuk mobile
+    setInterval(createFlower, isMobile ? 400 : 250);
+    setInterval(createFloatingHeart, isMobile ? 5000 : 3000);
+    setInterval(createSparkle, isMobile ? 1500 : 800);
+
+    /* ===== MUSIC AUTOPLAY ===== */
+    const music = document.getElementById("bg-music");
+    const startOverlay = document.getElementById("startOverlay");
+    const musicIndicator = document.getElementById("musicIndicator");
+    let musicStarted = false;
+
+    function fadeInMusic() {
+      let volume = 0;
+      music.volume = 0;
+      
+      const fade = setInterval(() => {
+        volume += 0.02;
+        if (volume >= 0.6) {
+          volume = 0.6;
+          clearInterval(fade);
+        }
+        music.volume = volume;
+      }, 100);
+    }
+
+    function startMusic(e) {
+      if (e) createRipple(e);
+      
+      if (!musicStarted) {
+        music.play().then(() => {
+          musicStarted = true;
+          fadeInMusic();
+          
+          // Hilangkan overlay
+          startOverlay.classList.add("hidden");
+          setTimeout(() => {
+            startOverlay.style.display = "none";
+          }, 800);
+          
+          // Tampilkan indikator musik
+          musicIndicator.classList.add("show");
+          setTimeout(() => {
+            musicIndicator.classList.remove("show");
+          }, 4000);
+          
+        }).catch(err => {
+          console.log("Error playing music:", err);
+        });
+      }
+    }
+
+    // Event listeners
+    startOverlay.addEventListener("click", startMusic);
+
+    // Coba autoplay langsung
+    window.addEventListener("load", () => {
+      music.play().then(() => {
+        musicStarted = true;
+        fadeInMusic();
+        startOverlay.style.display = "none";
+        musicIndicator.classList.add("show");
+        setTimeout(() => {
+          musicIndicator.classList.remove("show");
+        }, 4000);
+      }).catch(() => {
+        console.log("Autoplay diblokir, tampilkan overlay");
+      });
+    });
+
+    // Handle orientation change
+    window.addEventListener("orientationchange", () => {
+      location.reload();
+    });
+  </script>
+
+</body>
+</html>
